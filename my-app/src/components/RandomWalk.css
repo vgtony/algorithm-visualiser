@@ -1,0 +1,22 @@
+.random-walk-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.controls {
+  margin-bottom: 10px;
+}
+
+.reset-button {
+  margin-left: 10px;
+}
+
+.canvas {
+  border: 1px solid #ccc;
+  background: #000;
+}
+
+.stats {
+  margin-top: 10px;
+  color: #666;
+}
