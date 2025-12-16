@@ -42,7 +42,7 @@ const BubbleSort = () => {
           <div
             key={index}
             data-value={value}
-            style={{ height: `${value * 5 + 5}px` }}
+            style={{ height: `${value * 5 + 6}px` }}
           ></div>
         ))}
       </div>
