@@ -1,0 +1,62 @@
+.bubble-sort-container {
+  text-align: center;
+}
+
+.bubble-sort-container h1 {
+  /* position: absolute; */
+  /* top: 15%; */
+  /* margin-bottom: 40%; */
+  text-align: center;
+  color: #cfcfcf;
+  font-size: 32px;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.controls button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: #667eea;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.controls button:hover {
+  background: #764ba2;
+  transform: translateY(-2px);
+}
+
+.arrayBar {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  margin-top: 20px;
+  height: 600px;
+  width: 600px;
+}
+
+.arrayBar div {
+  width: 40px;
+  background: #3498db;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+}
+
+.arrayBar div:hover::after {
+  content: attr(data-value);
+  position: absolute;
+  top: -25px;
+  background: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+}
