@@ -1,0 +1,580 @@
+/* ===== BOGO SLOTS — Slot Machine Styles ===== */
+
+/* Light chase animation on the machine border */
+@keyframes lightChase {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+/* Reel spin — vertical scroll of number strip */
+@keyframes reelSpin {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+/* Bounce when reel stops */
+@keyframes stopBounce {
+    0% {
+        transform: translateY(-6px);
+    }
+
+    40% {
+        transform: translateY(3px);
+    }
+
+    70% {
+        transform: translateY(-1px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Big Win pulse */
+@keyframes bigWinPulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+        text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.12);
+        opacity: 0.9;
+        text-shadow: 0 0 30px #ffff00, 0 0 60px #ff8800;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+        text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+    }
+}
+
+/* Coin shower particles */
+@keyframes coinFall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Button pulse glow */
+@keyframes btnPulse {
+    0% {
+        box-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 24px rgba(255, 0, 0, 0.8), 0 0 48px rgba(255, 60, 0, 0.3);
+    }
+
+    100% {
+        box-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+    }
+}
+
+/* Screen shake on jackpot */
+@keyframes jackpotShake {
+
+    0%,
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+
+    10% {
+        transform: translateX(-4px) translateY(-2px);
+    }
+
+    20% {
+        transform: translateX(4px) translateY(2px);
+    }
+
+    30% {
+        transform: translateX(-3px) translateY(1px);
+    }
+
+    40% {
+        transform: translateX(3px) translateY(-1px);
+    }
+
+    50% {
+        transform: translateX(-2px) translateY(2px);
+    }
+
+    60% {
+        transform: translateX(2px) translateY(-2px);
+    }
+
+    70% {
+        transform: translateX(-1px) translateY(1px);
+    }
+
+    80% {
+        transform: translateX(1px) translateY(-1px);
+    }
+
+    90% {
+        transform: translateX(-1px) translateY(0);
+    }
+}
+
+/* Jackpot golden glow pulse */
+@keyframes jackpotGlow {
+    0% {
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.4), 0 0 60px rgba(255, 215, 0, 0.2), inset 0 0 30px rgba(0, 0, 0, 0.7);
+    }
+
+    50% {
+        box-shadow: 0 0 60px rgba(255, 215, 0, 0.8), 0 0 120px rgba(255, 215, 0, 0.4), 0 0 200px rgba(255, 150, 0, 0.2), inset 0 0 30px rgba(0, 0, 0, 0.7);
+    }
+
+    100% {
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.4), 0 0 60px rgba(255, 215, 0, 0.2), inset 0 0 30px rgba(0, 0, 0, 0.7);
+    }
+}
+
+/* Bright flash on win */
+@keyframes jackpotFlash {
+    0% {
+        opacity: 0.7;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.5;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Sparkle stars */
+@keyframes starSpin {
+    0% {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.3);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+        opacity: 1;
+    }
+}
+
+/* ===== Machine Container ===== */
+.slot-machine {
+    background: linear-gradient(145deg, #1a1a2e, #16213e);
+    border: 8px solid;
+    border-image: linear-gradient(90deg,
+            #d4af37 0%, #fff7a0 15%, #d4af37 30%,
+            #b8860b 50%,
+            #d4af37 70%, #fff7a0 85%, #d4af37 100%) 1;
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.6),
+        inset 0 0 30px rgba(0, 0, 0, 0.7),
+        0 0 60px rgba(212, 175, 55, 0.15);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Jackpot shake state */
+.slot-machine.jackpot-shake {
+    animation: jackpotShake 0.15s ease-in-out 12;
+}
+
+/* Jackpot glow state */
+.slot-machine.jackpot-glow {
+    animation: jackpotGlow 1.5s ease-in-out infinite;
+}
+
+/* White flash overlay */
+.jackpot-flash {
+    position: absolute;
+    inset: 0;
+    background: white;
+    z-index: 90;
+    pointer-events: none;
+    animation: jackpotFlash 1s ease-out forwards;
+    border-radius: 16px;
+}
+
+/* Decorative light strip */
+.slot-machine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg,
+            transparent, #ff4444, #ffaa00, #44ff44, #4444ff, #ff44ff, transparent);
+    background-size: 200% 100%;
+    animation: lightChase 2s linear infinite;
+}
+
+.slot-machine::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg,
+            transparent, #ff44ff, #4444ff, #44ff44, #ffaa00, #ff4444, transparent);
+    background-size: 200% 100%;
+    animation: lightChase 2s linear infinite reverse;
+}
+
+/* ===== Title ===== */
+.slot-title {
+    color: #d4af37;
+    text-shadow: 2px 2px 0 #000, 0 0 10px rgba(212, 175, 55, 0.4);
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== Reel Container ===== */
+.reel-container {
+    display: flex;
+    gap: 12px;
+    padding: 20px;
+    background: linear-gradient(180deg, #111 0%, #1a1a1a 50%, #111 100%);
+    border-radius: 12px;
+    border: 3px solid #444;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
+    position: relative;
+}
+
+/* Payline indicator arrows */
+.reel-container::before,
+.reel-container::after {
+    content: '▶';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #d4af37;
+    font-size: 1.2rem;
+    text-shadow: 0 0 6px rgba(212, 175, 55, 0.6);
+}
+
+.reel-container::before {
+    left: 4px;
+}
+
+.reel-container::after {
+    right: 4px;
+    content: '◀';
+}
+
+/* ===== Single Reel Column ===== */
+.reel-column {
+    width: 80px;
+    height: 240px;
+    overflow: hidden;
+    border-radius: 6px;
+    position: relative;
+    background: #fff;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient overlays for reel depth */
+.reel-column::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), transparent);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.reel-column::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.35), transparent);
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* ===== Reel Strip (the spinning part) ===== */
+.reel-strip {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-out;
+}
+
+.reel-strip.spinning {
+    animation: reelSpin 0.15s linear infinite;
+}
+
+.reel-strip.stopped {
+    animation: stopBounce 0.35s ease-out forwards;
+}
+
+/* ===== Cells ===== */
+.reel-cell {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #555;
+    border-bottom: 1px solid #e0e0e0;
+    user-select: none;
+    font-family: 'Courier New', monospace;
+}
+
+/* Center payline cell */
+.reel-cell.payline {
+    background: linear-gradient(180deg, #fff7cc 0%, #fff 50%, #fff7cc 100%);
+    border-top: 3px solid #d4af37;
+    border-bottom: 3px solid #d4af37;
+    color: #d00000;
+    font-size: 2.6rem;
+    position: relative;
+    z-index: 10;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Controls bar ===== */
+.controls-bar {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+    background: linear-gradient(135deg, #2a2a3e, #333);
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 1px solid #555;
+}
+
+/* Mode buttons */
+.mode-panel {
+    display: flex;
+    gap: 4px;
+    background: #222;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.mode-btn {
+    border: none;
+    padding: 8px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.mode-btn.active {
+    background: linear-gradient(135deg, #d4af37, #f0d060);
+    color: #000;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+}
+
+.mode-btn.inactive {
+    background: transparent;
+    color: #888;
+}
+
+.mode-btn.inactive:hover {
+    color: #ccc;
+    background: #444;
+}
+
+/* Size slider area */
+.size-slider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* ===== Spin Button (main action) ===== */
+.spin-btn {
+    background: linear-gradient(180deg, #ff2222 0%, #cc0000 50%, #990000 100%);
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 900;
+    padding: 14px 48px;
+    border: 4px solid #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.15s ease;
+    animation: btnPulse 2s ease-in-out infinite;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.spin-btn:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.6), 0 0 60px rgba(255, 60, 0, 0.3);
+}
+
+.spin-btn:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.spin-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    animation: none;
+}
+
+.spin-btn.spinning-active {
+    background: linear-gradient(180deg, #666 0%, #444 100%);
+    animation: none;
+}
+
+.spin-btn.winner {
+    background: linear-gradient(180deg, #22cc22 0%, #009900 100%);
+    animation: btnPulse 1s ease-in-out infinite;
+}
+
+/* ===== Reset / secondary buttons ===== */
+.reset-btn {
+    background: linear-gradient(135deg, #444, #333);
+    color: #ccc;
+    border: 2px solid #666;
+    padding: 10px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.reset-btn:hover {
+    background: linear-gradient(135deg, #555, #444);
+    border-color: #888;
+}
+
+/* ===== BIG WIN overlay ===== */
+.big-win-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #ffd700;
+    animation: bigWinPulse 0.8s ease-in-out infinite;
+    z-index: 100;
+    pointer-events: none;
+    text-align: center;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 0%, rgba(20, 0, 0, 0.9) 100%);
+    padding: 30px 50px;
+    border-radius: 20px;
+    border: 6px solid #ffd700;
+    box-shadow:
+        0 0 40px rgba(255, 215, 0, 0.6),
+        0 0 80px rgba(255, 215, 0, 0.3),
+        0 0 120px rgba(255, 150, 0, 0.2),
+        inset 0 0 20px rgba(255, 215, 0, 0.1);
+    line-height: 1.3;
+}
+
+.big-win-overlay span {
+    display: block;
+    font-size: 2rem;
+    color: #fff;
+    margin-top: 6px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.jackpot-stars {
+    font-size: 1.5rem;
+    color: #fff;
+    letter-spacing: 12px;
+    margin-bottom: 6px;
+    animation: starSpin 2s linear infinite;
+}
+
+.jackpot-sub {
+    font-size: 1.2rem;
+    color: #ff8c00;
+    margin-top: 8px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 8px rgba(255, 140, 0, 0.6);
+}
+
+/* ===== Manual mode controls ===== */
+.manual-controls {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.manual-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.manual-hint {
+    color: #777;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* ===== Coin particles (win effect) ===== */
+.coin-particle {
+    position: absolute;
+    animation: coinFall linear forwards;
+    pointer-events: none;
+    z-index: 90;
+    filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.6));
+}
